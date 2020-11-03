@@ -3,7 +3,7 @@
     <h3>Contacts</h3>
     <button 
       class="plus" type="button" 
-      @click="$emit('show-modal', true)"
+      @click="$emit('show-modal')"
     >
       +
     </button>

@@ -3,34 +3,44 @@
     <Header 
       v-on:show-modal="renderModal"
     />
-    <AddContact 
-      v-on:add-contact="addContact"
+    <AddContact
+      v-if="showModal" 
       v-on:show-modal="renderModal" 
-      v-if="showModal"
+      v-on:add-contact="addContact"
     />
     <Phonebook 
       v-bind:phonebook="phonebook"
-      v-on:del-contact="deleteContact" 
+      v-on:del-contact="deleteContact"
+      v-on:show-delete-modal="renderDeleteModal" 
+    />
+    <Modal 
+      v-if="showDeleteModal"
+      v-on:show-delete-modal="renderDeleteModal"
+      v-on:del-contact="deleteContact"
+      v-bind:deleteId="deleteId"
     />
   </div>
 </template>
 
 <script>
-
 import Header from './components/layout/Header';
 import Phonebook from './components/Phonebook';
 import AddContact from './components/AddContact';
+import Modal from './components/Modal';
 
 export default {
   name: 'App',
   components: {
     Header,
     Phonebook,
-    AddContact
+    AddContact,
+    Modal
   },
   data() {
     return {
       showModal: false,
+      showDeleteModal: false,
+      deleteId: null,
       phonebook: [
         {
           id: 1,
@@ -52,13 +62,23 @@ export default {
   },
   methods: {
     deleteContact(id) {
+      // console.log(id);
+      console.log('CALLED DELETE CONTACT');
       this.phonebook = this.phonebook.filter(contact => contact.id !== id);
+      this.showDeleteModal = false;
     },
     addContact(newContact) {
+      console.log('CALLED ADD CONTACT');
       this.phonebook = [newContact, ...this.phonebook];
     },
     renderModal() {
       this.showModal = !this.showModal;
+    },
+    renderDeleteModal(id) {
+      console.log('CALLED RENDER DELETE MODAL');
+      this.showDeleteModal = !this.showDeleteModal;
+      this.deleteId = id;
+      console.log(this.deleteId);
     }
   }
 }

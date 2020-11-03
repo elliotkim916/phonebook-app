@@ -6,7 +6,7 @@
     >
       <ContactItem 
         v-bind:contact="contact" 
-        v-on:del-contact="$emit('del-contact', contact.id)" 
+        v-on:show-delete-modal="$emit('show-delete-modal', contact.id)" 
       />
     </div>
   </div>

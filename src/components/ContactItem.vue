@@ -7,7 +7,7 @@
       </div>
       <button 
         class="del" type="button" 
-        @click="$emit('del-contact', contact.id)"
+        @click="$emit('show-delete-modal', contact.id)"
       >
         x
       </button>

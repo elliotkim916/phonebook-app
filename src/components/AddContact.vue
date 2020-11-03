@@ -1,30 +1,36 @@
 <template>
-  <div class="formContainer">
-    <form @submit.prevent="addContact">
-      <input 
-        type="text" 
-        name="name" 
-        v-model="name" 
-        placeholder="Enter name.."
-        required
-      >
-      <input 
-        type="text" 
-        name="phoneNumber" 
-        v-model="phoneNumber" 
-        placeholder="Enter phone number.."
-        required
-      >
-      <div class="buttonContainer">
-        <button type="submit" class="btn">
-          Submit
-        </button>
-        <button type="button" class="btn" @click="$emit('show-modal', false)"> 
-          Cancel
-        </button>
+  <transition name="modal">
+    <div class="modal-mask">
+      <div class="modal-wrapper">
+        <div class="formContainer">
+          <form @submit.prevent="addContact">
+            <input 
+              type="text" 
+              name="name" 
+              v-model="name" 
+              placeholder="Enter name.."
+              required
+            >
+            <input 
+              type="text" 
+              name="phoneNumber" 
+              v-model="phoneNumber" 
+              placeholder="Enter phone number.."
+              required
+            >
+            <div class="buttonContainer">
+              <button type="submit" class="btn">
+                Submit
+              </button>
+              <button type="button" class="btn" @click="$emit('show-modal')"> 
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </form>
-  </div>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -48,7 +54,7 @@ export default {
 
       // send up to parent
       this.$emit('add-contact', newContact);
-      this.$emit('show-modal', false);
+      this.$emit('show-modal');
 
       this.name = '';
       this.phoneNumber = '';
@@ -92,5 +98,33 @@ export default {
   .buttonContainer {
     display: flex;
     flex-direction: row;
+  }
+
+  .modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: table;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .modal-container {
+    width: 300px;
+    margin: 0px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+    transition: all 0.3s ease;
+    font-family: Helvetica, Arial, sans-serif;
   }
 </style>
