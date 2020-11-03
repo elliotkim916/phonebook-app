@@ -15,7 +15,14 @@
         placeholder="Enter phone number.."
         required
       >
-      <input type="submit" value="Submit" class="btn">
+      <div class="buttonContainer">
+        <button type="submit" class="btn">
+          Submit
+        </button>
+        <button type="button" class="btn" @click="$emit('show-modal', false)"> 
+          Cancel
+        </button>
+      </div>
     </form>
   </div>
 </template>
@@ -41,6 +48,7 @@ export default {
 
       // send up to parent
       this.$emit('add-contact', newContact);
+      this.$emit('show-modal', false);
 
       this.name = '';
       this.phoneNumber = '';
@@ -51,16 +59,18 @@ export default {
 
 <style scoped>
   .formContainer {
-    padding: 15px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    padding: 30px;
+    border-radius: 15px;
+    width: 310px;
     background: #20232a;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   form {
     display: flex;
     flex-direction: column;
-    width: 35%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -72,9 +82,15 @@ export default {
     border: none;
     border-bottom: 2px solid whitesmoke;
     margin-bottom: 5px;
+    color: whitesmoke;
   }
 
   .btn {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Helvetica;
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: row;
   }
 </style>

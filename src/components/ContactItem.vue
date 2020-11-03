@@ -25,7 +25,6 @@ export default {
 
 <style scoped>
   .contact-item {
-    /* background: #323a41; */
     padding: 10px 40px 10px 20px;
     display: flex;
     flex-direction: row;
@@ -34,16 +33,13 @@ export default {
   }
 
   p {
-    color: #c3c5c6
+    color: #c3c5c6;
+    margin-right: 15px;
   }
 
   .contact-info {
     display: flex;
     flex-direction: column;
-  }
-
-  p {
-    margin-right: 15px;
   }
 
   .line {
@@ -61,5 +57,9 @@ export default {
     border-radius: 50%;
     cursor: pointer;
     font-weight: bolder;
+    transition: 0.4s ease-out;
+  }
+  .del:hover {
+    background: #cc0525;
   }
 </style>

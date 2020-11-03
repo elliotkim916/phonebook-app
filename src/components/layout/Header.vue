@@ -3,7 +3,7 @@
     <h3>Contacts</h3>
     <button 
       class="plus" type="button" 
-      @click="$emit('del-contact', contact.id)"
+      @click="$emit('show-modal', true)"
     >
       +
     </button>
@@ -40,5 +40,9 @@ export default {
     border-radius: 50%;
     cursor: pointer;
     font-weight: bolder;
+    transition: 0.4s ease-out;
+  }
+  .plus:hover {
+    background: #00b5fe;
   }
 </style>

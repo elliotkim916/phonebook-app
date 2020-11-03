@@ -1,7 +1,13 @@
 <template>
   <div id="app">
-    <Header />
-    <!-- <AddContact v-on:add-contact="addContact" /> -->
+    <Header 
+      v-on:show-modal="renderModal"
+    />
+    <AddContact 
+      v-on:add-contact="addContact"
+      v-on:show-modal="renderModal" 
+      v-if="showModal"
+    />
     <Phonebook 
       v-bind:phonebook="phonebook"
       v-on:del-contact="deleteContact" 
@@ -13,17 +19,18 @@
 
 import Header from './components/layout/Header';
 import Phonebook from './components/Phonebook';
-// import AddContact from './components/AddContact';
+import AddContact from './components/AddContact';
 
 export default {
   name: 'App',
   components: {
     Header,
     Phonebook,
-    // AddContact
+    AddContact
   },
   data() {
     return {
+      showModal: false,
       phonebook: [
         {
           id: 1,
@@ -49,6 +56,9 @@ export default {
     },
     addContact(newContact) {
       this.phonebook = [newContact, ...this.phonebook];
+    },
+    renderModal() {
+      this.showModal = !this.showModal;
     }
   }
 }
@@ -79,10 +89,21 @@ body {
   width: 30%;
   margin-left: auto;
   margin-right: auto;
+  transition: 0.4s ease-out;
 }
-
 .btn:hover {
-  background: #2fc03a;
+  background: #1e7e26;
 }
 
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 98;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+}
 </style>
