@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="formContainer">
     <form @submit.prevent="addContact">
       <input 
         type="text" 
@@ -50,16 +50,31 @@ export default {
 </script>
 
 <style scoped>
+  .formContainer {
+    padding: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background: #20232a;
+  }
+
   form {
     display: flex;
+    flex-direction: column;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   input[type="text"] {
-    flex: 10;
-    padding: 5px
+    padding: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Helvetica;
+    background: #20232a;
+    border: none;
+    border-bottom: 2px solid whitesmoke;
+    margin-bottom: 5px;
   }
 
   .btn {
-    flex: 2;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Helvetica;
   }
 </style>

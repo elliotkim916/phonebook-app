@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <AddContact v-on:add-contact="addContact" />
+    <!-- <AddContact v-on:add-contact="addContact" /> -->
     <Phonebook 
       v-bind:phonebook="phonebook"
       v-on:del-contact="deleteContact" 
@@ -13,14 +13,14 @@
 
 import Header from './components/layout/Header';
 import Phonebook from './components/Phonebook';
-import AddContact from './components/AddContact'
+// import AddContact from './components/AddContact';
 
 export default {
   name: 'App',
   components: {
     Header,
     Phonebook,
-    AddContact
+    // AddContact
   },
   data() {
     return {
@@ -64,19 +64,25 @@ export default {
 body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Helvetica;
   line-height: 1.4;
+  background: #323a41;
 }
 
 .btn {
   display: inline-block;
   border: none;
-  background: #555;
+  background: #2fc05f;
+  border-radius: 10px;
   color: #fff;
   padding: 7px 2px;
   cursor: pointer;
+  margin-top: 15px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .btn:hover {
-  background: #666;
+  background: #2fc03a;
 }
 
 </style>
