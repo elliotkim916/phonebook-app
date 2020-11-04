@@ -2,8 +2,9 @@
   <header class="header">
     <h3>Contacts</h3>
     <button 
-      class="plus" type="button" 
-      @click="$emit('show-modal')"
+      class="plus" 
+      type="button" 
+      @click="$emit('show-add-modal')"
     >
       +
     </button>
@@ -25,11 +26,6 @@ export default {
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px 10px 20px;
-  }
-
-  .header a {
-    color: #fff;
-    padding-right: 5px;
   }
 
   .plus {

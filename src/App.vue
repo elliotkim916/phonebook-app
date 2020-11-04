@@ -1,19 +1,18 @@
 <template>
   <div id="app">
     <Header 
-      v-on:show-modal="renderModal"
+      v-on:show-add-modal="renderAddModal"
     />
     <AddContact
-      v-if="showModal" 
-      v-on:show-modal="renderModal" 
+      v-if="showAddModal" 
+      v-on:show-add-modal="renderAddModal" 
       v-on:add-contact="addContact"
     />
     <Phonebook 
       v-bind:phonebook="phonebook"
-      v-on:del-contact="deleteContact"
       v-on:show-delete-modal="renderDeleteModal" 
     />
-    <Modal 
+    <DeleteModal 
       v-if="showDeleteModal"
       v-on:show-delete-modal="renderDeleteModal"
       v-on:del-contact="deleteContact"
@@ -26,7 +25,7 @@
 import Header from './components/layout/Header';
 import Phonebook from './components/Phonebook';
 import AddContact from './components/AddContact';
-import Modal from './components/Modal';
+import DeleteModal from './components/DeleteModal';
 
 export default {
   name: 'App',
@@ -34,11 +33,11 @@ export default {
     Header,
     Phonebook,
     AddContact,
-    Modal
+    DeleteModal
   },
   data() {
     return {
-      showModal: false,
+      showAddModal: false,
       showDeleteModal: false,
       deleteId: null,
       phonebook: [
@@ -61,24 +60,19 @@ export default {
     }
   },
   methods: {
+    addContact(newContact) {
+      this.phonebook = [newContact, ...this.phonebook];
+    },
     deleteContact(id) {
-      // console.log(id);
-      console.log('CALLED DELETE CONTACT');
       this.phonebook = this.phonebook.filter(contact => contact.id !== id);
       this.showDeleteModal = false;
     },
-    addContact(newContact) {
-      console.log('CALLED ADD CONTACT');
-      this.phonebook = [newContact, ...this.phonebook];
-    },
-    renderModal() {
-      this.showModal = !this.showModal;
+    renderAddModal() {
+      this.showAddModal = !this.showAddModal;
     },
     renderDeleteModal(id) {
-      console.log('CALLED RENDER DELETE MODAL');
       this.showDeleteModal = !this.showDeleteModal;
       this.deleteId = id;
-      console.log(this.deleteId);
     }
   }
 }
@@ -98,6 +92,7 @@ body {
 }
 
 .btn {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Helvetica;
   display: inline-block;
   border: none;
   background: #2fc05f;
@@ -115,15 +110,20 @@ body {
   background: #1e7e26;
 }
 
-.modal-overlay {
-  position: absolute;
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 98;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: table;
+  transition: opacity 0.3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
 }
 </style>
