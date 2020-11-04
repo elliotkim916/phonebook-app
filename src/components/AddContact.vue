@@ -1,43 +1,41 @@
-<template>
-  <transition name="modal">
-    <div class="modal-mask">
-      <div class="modal-wrapper">
-        <div class="formContainer">
-          <form @submit.prevent="addContact">
-            <input 
-              type="text" 
-              name="name" 
-              v-model="name" 
-              placeholder="Enter name.."
-              required
+<template> 
+  <div class="modal-mask">
+    <div class="modal-wrapper">
+      <div class="formContainer">
+        <form @submit.prevent="addContact">
+          <input 
+            type="text" 
+            name="name" 
+            v-model="name" 
+            placeholder="Enter name.."
+            required
+          >
+          <input 
+            type="text" 
+            name="phoneNumber" 
+            v-model="phoneNumber" 
+            placeholder="Enter phone number.."
+            required
+          >
+          <div class="buttonContainer">
+            <button 
+              type="submit" 
+              class="btn"
             >
-            <input 
-              type="text" 
-              name="phoneNumber" 
-              v-model="phoneNumber" 
-              placeholder="Enter phone number.."
-              required
-            >
-            <div class="buttonContainer">
-              <button 
-                type="submit" 
-                class="btn"
-              >
-                Submit
-              </button>
-              <button 
-                type="button" 
-                class="btn" 
-                @click="$emit('show-add-modal')"
-              > 
-                Cancel
-              </button>
-            </div>
-          </form>
-        </div>
+              Submit
+            </button>
+            <button 
+              type="button" 
+              class="btn" 
+              @click="$emit('show-add-modal')"
+            > 
+              Cancel
+            </button>
+          </div>
+        </form>
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script>

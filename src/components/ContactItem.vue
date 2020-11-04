@@ -83,7 +83,6 @@ p {
 }
 
 .icon-color {
-  /* background: whitesmoke; */
   color: whitesmoke;
 }
 </style>

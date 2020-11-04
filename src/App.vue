@@ -66,13 +66,16 @@ export default {
     deleteContact(id) {
       this.phonebook = this.phonebook.filter(contact => contact.id !== id);
       this.showDeleteModal = false;
+      this.deleteId = null;
     },
     renderAddModal() {
       this.showAddModal = !this.showAddModal;
     },
     renderDeleteModal(id) {
       this.showDeleteModal = !this.showDeleteModal;
-      this.deleteId = id;
+      if (id) {
+        this.deleteId = id;
+      }
     }
   }
 }

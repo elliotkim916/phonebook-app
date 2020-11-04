@@ -1,27 +1,27 @@
 <template>
-  <transition name="modal">
-    <div class="modal-mask">
-      <div class="modal-wrapper"> 
-        <div class="modal-container">
-          <h3>Are you sure you want to delete this contact?</h3>
-          <div class="btn-container">
-            <button 
-              @click="$emit('del-contact', deleteId)" 
-              class="btn"
-            >
-              YES
-            </button>
-            <button 
-              @click="$emit('show-delete-modal')" 
-              class="btn"
-            >
-              NO
-            </button>
-          </div>
+  <div class="modal-mask">
+    <div class="modal-wrapper"> 
+      <div class="modal-container">
+        <h3>Are you sure you want to delete this contact?</h3>
+        <div class="btn-container">
+          <button 
+            @click="$emit('del-contact', deleteId)" 
+            class="btn"
+            type="button" 
+          >
+            Yes
+          </button>
+          <button 
+            @click="$emit('show-delete-modal')" 
+            class="btn"
+            type="button" 
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script>
