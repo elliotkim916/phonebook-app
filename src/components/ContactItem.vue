@@ -2,14 +2,27 @@
   <div>
     <div class="contact-item">
       <div class="contact-info">
-        <p>{{ contact.name }}</p>
-        <p>{{ contact.phoneNumber }}</p>
+        <div class="contact-container">
+          <font-awesome-icon 
+            :icon="['fas', 'user']" 
+            class="icon-color"
+          />
+          <p>{{ contact.name }}</p>
+        </div>
+        <div class="contact-container">
+          <font-awesome-icon 
+          :icon="['fas', 'phone-alt']" 
+          class="icon-color"
+        />
+          <p>{{ contact.phoneNumber }}</p>
+        </div>
       </div>
       <button 
-        class="del" type="button" 
+        class="del" 
+        type="button" 
         @click="$emit('show-delete-modal', contact.id)"
       >
-        x
+        <font-awesome-icon :icon="['fas', 'trash']" />
       </button>
     </div>
     <div class="line"></div>
@@ -34,12 +47,18 @@ export default {
 
 p {
   color: #c3c5c6;
-  margin-right: 15px;
+  margin: 0 15px 0 12px;
 }
 
 .contact-info {
   display: flex;
   flex-direction: column;
+}
+.contact-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 6px;
 }
 
 .line {
@@ -53,7 +72,7 @@ p {
   background: #f41f41;
   color: #fff;
   border: none;
-  padding: 5px 9px;
+  padding: 7px 9px;
   border-radius: 50%;
   cursor: pointer;
   font-weight: bolder;
@@ -61,5 +80,10 @@ p {
 }
 .del:hover {
   background: #cc0525;
+}
+
+.icon-color {
+  /* background: whitesmoke; */
+  color: whitesmoke;
 }
 </style>

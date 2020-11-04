@@ -1,12 +1,12 @@
 <template>
   <header class="header">
-    <h3>Contacts</h3>
+    <h3>Phonebook</h3>
     <button 
       class="plus" 
       type="button" 
       @click="$emit('show-add-modal')"
     >
-      +
+      <font-awesome-icon :icon="['fas', 'plus']" />
     </button>
   </header>
 </template>
@@ -32,7 +32,7 @@ export default {
     background: #007bfe;
     color: #fff;
     border: none;
-    padding: 5px 9px;
+    padding: 7px 9px;
     border-radius: 50%;
     cursor: pointer;
     font-weight: bolder;

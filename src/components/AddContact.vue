@@ -19,10 +19,17 @@
               required
             >
             <div class="buttonContainer">
-              <button type="submit" class="btn">
+              <button 
+                type="submit" 
+                class="btn"
+              >
                 Submit
               </button>
-              <button type="button" class="btn" @click="$emit('show-add-modal')"> 
+              <button 
+                type="button" 
+                class="btn" 
+                @click="$emit('show-add-modal')"
+              > 
                 Cancel
               </button>
             </div>
